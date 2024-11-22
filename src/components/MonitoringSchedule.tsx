@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import stationsData from "../data/stations-data.json";
 import { DayRow } from "./monitoring-schedule/DayRow";
 import { THeader } from "./monitoring-schedule/THeader";
 import { TableActions } from "./monitoring-schedule/TableActions";
@@ -7,53 +8,32 @@ import { TableActions } from "./monitoring-schedule/TableActions";
 export type GasStation = {
   id: number;
   name: string;
+  acronym: string;
 };
 
 export const MonitoringSchedule = () => {
   const days = ["Segunda", "Terca", "Quarta", "Quinta", "Sexta"];
-  const [stations, setStations] = useState<GasStation[]>([
-    {
-      id: 1,
-      name: "Elefantinho",
-    },
-    {
-      id: 2,
-      name: "Querubim",
-    },
-    /* {
-      id: 3,
-      name: "Rei Davi",
-    },
-    {
-      id: 1,
-      name: "Rosa Flor",
-    },
-    {
-      id: 2,
-      name: "Valente",
-    }, */
-    {
-      id: 6,
-      name: "XPRES",
-    },
-  ]);
+  const [stations, setStations] = useState<GasStation[]>(
+    stationsData.available.map(({ id, name, acronym }) => ({
+      id,
+      name,
+      acronym,
+    }))
+  );
 
   /**
    * Alguns postos apresentam sistema de câmeras que permite
-   * um download rápido o bastante para ser monitorado ao fim
-   * do dia. Por isso terão prioridade de monitoramento no
-   * cronograma.
+   * um monitoramento acelerado, via download (até 64x) ou 
+   * assistido a partir do DVR de cada posto (até 8x) de
+   * maneira remota.
    */
-  const [priorityStations, setPriorityStations] = useState<GasStation[]>([
-    {
-      id: 1,
-      name: "Rosa Flor",
-    },
-    {
-      id: 2,
-      name: "Valente",
-    },
-  ]);
+  const [priorityStations, setPriorityStations] = useState<GasStation[]>(
+    stationsData.priority.map(({ id, name, acronym }) => ({
+      id,
+      name,
+      acronym,
+    }))
+  );
 
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 

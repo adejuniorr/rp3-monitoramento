@@ -1,0 +1,68 @@
+{
+    "stations": [
+        {
+          "id": 1,
+          "name": "Elefantinho",
+          "acronym": "PEL"
+        },
+        {
+          "id": 2,
+          "name": "Querubim",
+          "acronym": "PRJ"
+        },
+        {
+          "id": 3,
+          "name": "Rei Davi",
+          "acronym": "PRD"
+        },
+        {
+          "id": 4,
+          "name": "Rosa Flor",
+          "acronym": "PRF"
+        },
+        {
+          "id": 5,
+          "name": "Valente",
+          "acronym": "PV"
+        },
+        {
+          "id": 6,
+          "name": "XPRES",
+          "acronym": "XPRES"
+        },
+        {
+          "id": 7,
+          "name": "Rio Una",
+          "acronym": "PRU"
+        }
+    ],
+    "available": [
+        {
+            "id": 1,
+            "name": "Elefantinho",
+            "acronym": "PEL"
+        },
+        {
+            "id": 2,
+            "name": "Querubim",
+            "acronym": "PRJ"
+        },
+        {
+            "id": 3,
+            "name": "XPRES",
+            "acronym": "XPRES"
+        }
+    ],
+    "priority": [
+        {
+            "id": 1,
+            "name": "Rosa Flor",
+            "acronym": "PRF"
+          },
+          {
+            "id": 2,
+            "name": "Valente",
+            "acronym": "PV"
+          }
+    ]
+}
