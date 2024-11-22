@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-import { IoTriangle } from "react-icons/io5";
+import { DayRow } from "./monitoring-schedule/DayRow";
+import { THeader } from "./monitoring-schedule/THeader";
+import { TableActions } from "./monitoring-schedule/TableActions";
 
 export type GasStation = {
   id: number;
@@ -56,59 +57,35 @@ export const MonitoringSchedule = () => {
 
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 
+  const currentDay: number = new Date().getDay() - 1;
+
   return (
-    <div className="relative">
-      <table className="border-collapse border-2 border-gray-100 shadow-md shadow-gray-50 w-[600px] rounded-md overflow-hidden text-sm text-left">
-        <thead className="bg-gray-700">
-          <tr>
-            <th className="border border-gray-800 px-4 py-2">Dias da Semana</th>
-            <th colSpan={2} className="border border-gray-800 px-4 py-2">
-              Postos da Rede
-            </th>
-          </tr>
-        </thead>
+    <div className="relative rounded-[16px] border border-foreground bg-background">
+      <table className="w-[600px] h-[400px] overflow-hidden text-base">
+        <THeader />
         <tbody>
           {days.map((day, dayIndex) => (
-            <tr key={day}>
-              <th className="border border-gray-800 px-4 py-2">{day}</th>
-              <td className="border border-gray-800 px-4 py-2">
-                {stations[dayIndex % stations.length]?.name}
-              </td>
-              <td className="border border-gray-800 px-4 py-2">
-                {priorityStations[dayIndex % priorityStations.length].name}
-              </td>
-            </tr>
+            <DayRow
+              key={day}
+              day={day}
+              dayIndex={dayIndex}
+              currentDay={currentDay}
+              station={stations[dayIndex % stations.length]}
+              priorityStation={
+                priorityStations[dayIndex % priorityStations.length]
+              }
+            />
           ))}
-          <tr>
-            <th className="border border-gray-800 px-4 py-2" />
-            <td className="px-4 py-2">
-              <button className="px-4 py-2 bg-gray-300 text-gray-800 rounded-sm">
-                Editar
-              </button>
-            </td>
-            <td
-              className="px-4 py-2 flex gap-2"
-              onMouseEnter={() => setIsTooltipVisible(true)}
-              onMouseLeave={() => setIsTooltipVisible(false)}
-            >
-              <button className="px-4 py-2 bg-gray-300 text-gray-800 rounded-sm">
-                <FaArrowUp />
-              </button>
-              <button className="px-4 py-2 bg-gray-300 text-gray-800 rounded-sm">
-                <FaArrowDown />
-              </button>
-            </td>
-          </tr>
+          <TableActions
+            handleEditClick={() => console.log("Editando")}
+            handleMoveUpClick={() => console.log("Movendo para cima")}
+            handleMoveDownClick={() => console.log("Movendo para baixo")}
+            isTooltipVisible={isTooltipVisible}
+            openTooltip={() => setIsTooltipVisible(true)}
+            closeTooltip={() => setIsTooltipVisible(false)}
+          />
         </tbody>
       </table>
-      {isTooltipVisible && (
-        <div className="absolute left-[525px] top-[220px] z-20 text-center font-bold w-[160px] bg-red-500 px-4 py-2">
-          <small>Clique para alterar a ordem</small>
-          <span className="absolute -left-[15px] top-[20px] -rotate-90 text-red-500">
-            <IoTriangle />
-          </span>
-        </div>
-      )}
     </div>
   );
 };
