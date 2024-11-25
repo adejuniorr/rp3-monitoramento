@@ -1,41 +1,51 @@
+import { useState } from "react";
 import { Button } from "../buttons/Button";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { IoTriangle } from "react-icons/io5";
 
 interface TableActionsProps {
-  handleEditClick: () => void;
-  handleMoveUpClick: () => void;
-  handleMoveDownClick: () => void;
-  isTooltipVisible: boolean;
-  openTooltip: () => void;
-  closeTooltip: () => void;
+  editTable: () => void;
+  moveUpTableRows: () => void;
+  moveDownTableRows: () => void;
 }
 
 export const TableActions = ({
-  handleEditClick,
-  handleMoveUpClick,
-  handleMoveDownClick,
-  isTooltipVisible,
-  openTooltip,
-  closeTooltip,
+  editTable,
+  moveUpTableRows,
+  moveDownTableRows,
 }: TableActionsProps) => {
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+
+  const openTooltip = () => setIsTooltipVisible(true);
+  const closeTooltip = () => setIsTooltipVisible(false);
+
   return (
     <tr>
       <th className="py-[15px] border-r border-foreground text-background">
         .
       </th>
       <td className="py-[15px] text-center">
-        <Button onClick={handleEditClick}>Editar</Button>
+        <Button onClick={editTable}>Editar</Button>
       </td>
       <td
         className="flex gap-2 items-center justify-center h-full"
         onMouseEnter={openTooltip}
         onMouseLeave={closeTooltip}
       >
-        <Button onClick={handleMoveUpClick}>
+        <Button
+          onClick={() => {
+            moveUpTableRows();
+            closeTooltip();
+          }}
+        >
           <FaArrowUp />
         </Button>
-        <Button onClick={handleMoveDownClick}>
+        <Button
+          onClick={() => {
+            moveDownTableRows();
+            closeTooltip();
+          }}
+        >
           <FaArrowDown />
         </Button>
       </td>
