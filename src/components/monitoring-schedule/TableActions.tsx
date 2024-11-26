@@ -21,7 +21,7 @@ export const TableActions = ({
 
   return (
     <tr className="h-[75px]">
-      <th className="border-r border-foreground text-background select-none">
+      <th className="border-r border-foreground dark:border-gray-500 text-background select-none">
         .
       </th>
       <td className="text-center relative">

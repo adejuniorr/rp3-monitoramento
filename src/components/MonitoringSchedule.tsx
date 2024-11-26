@@ -47,7 +47,7 @@ export const MonitoringSchedule = () => {
   };
 
   return (
-    <div className="relative rounded-[16px] border border-foreground bg-background">
+    <div className="relative rounded-[16px] border border-foreground dark:border-gray-500 bg-background">
       <table className="w-[600px] h-[400px] overflow-hidden text-base">
         <THeader />
         <tbody>
