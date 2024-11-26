@@ -11,7 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "rp3-blue": "#11368E",
+        "rp3-yellow": "#FFDE21"
       },
+      boxShadow: {
+        "border-b": "0px 4px 0px",
+      }
     },
   },
   plugins: [],
