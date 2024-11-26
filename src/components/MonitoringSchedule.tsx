@@ -16,9 +16,10 @@ export const MonitoringSchedule = () => {
 
   const {
     availableStations,
-    setAvailableStations,
+    updateAvailableStations,
     priorityStations,
-    setPriorityStations,
+    updatePriorityStations,
+    isLoading,
   } = useScheduleContext();
 
   const handleMoveUpTableRows = () => {
@@ -27,9 +28,9 @@ export const MonitoringSchedule = () => {
 
     if (firstOfAvailableStations && firstOfPriorityStations) {
       availableStations.push(firstOfAvailableStations);
-      setAvailableStations([...availableStations]);
+      updateAvailableStations([...availableStations]);
       priorityStations.push(firstOfPriorityStations);
-      setPriorityStations([...priorityStations]);
+      updatePriorityStations([...priorityStations]);
     }
   };
 
@@ -39,9 +40,9 @@ export const MonitoringSchedule = () => {
 
     if (lastOfAvailableStations && lastOfPriorityStations) {
       availableStations.unshift(lastOfAvailableStations);
-      setAvailableStations([...availableStations]);
+      updateAvailableStations([...availableStations]);
       priorityStations.unshift(lastOfPriorityStations);
-      setPriorityStations([...priorityStations]);
+      updatePriorityStations([...priorityStations]);
     }
   };
 
@@ -50,18 +51,43 @@ export const MonitoringSchedule = () => {
       <table className="w-[600px] h-[400px] overflow-hidden text-base">
         <THeader />
         <tbody>
-          {days.map((day, dayIndex) => (
-            <DayRow
-              key={day}
-              day={day}
-              dayIndex={dayIndex}
-              currentDay={currentDay}
-              station={availableStations[dayIndex % availableStations.length]}
-              priorityStation={
-                priorityStations[dayIndex % priorityStations.length]
-              }
-            />
-          ))}
+          {isLoading ? (
+            <>
+              {days.map((day, dayIndex) => (
+                <DayRow
+                  key={day}
+                  day={day}
+                  dayIndex={dayIndex}
+                  currentDay={currentDay}
+                  station={{
+                    id: 1,
+                    name: "Carregando...",
+                  }}
+                  priorityStation={{
+                    id: 1,
+                    name: "Carregando...",
+                  }}
+                />
+              ))}
+            </>
+          ) : (
+            <>
+              {days.map((day, dayIndex) => (
+                <DayRow
+                  key={day}
+                  day={day}
+                  dayIndex={dayIndex}
+                  currentDay={currentDay}
+                  station={
+                    availableStations[dayIndex % availableStations.length]
+                  }
+                  priorityStation={
+                    priorityStations[dayIndex % priorityStations.length]
+                  }
+                />
+              ))}
+            </>
+          )}
           <TableActions
             moveUpTableRows={handleMoveUpTableRows}
             moveDownTableRows={handleMoveDownTableRows}
