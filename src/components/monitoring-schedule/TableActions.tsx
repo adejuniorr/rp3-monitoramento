@@ -4,31 +4,39 @@ import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { IoTriangle } from "react-icons/io5";
 
 interface TableActionsProps {
-  editTable: () => void;
   moveUpTableRows: () => void;
   moveDownTableRows: () => void;
 }
 
 export const TableActions = ({
-  editTable,
   moveUpTableRows,
   moveDownTableRows,
 }: TableActionsProps) => {
+  const [isEditing, setIsEditing] = useState(false);
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 
+  const editTable = () => setIsEditing(!isEditing);
   const openTooltip = () => setIsTooltipVisible(true);
   const closeTooltip = () => setIsTooltipVisible(false);
 
   return (
-    <tr>
-      <th className="py-[15px] border-r border-foreground text-background">
+    <tr className="h-[75px]">
+      <th className="border-r border-foreground text-background select-none">
         .
       </th>
-      <td className="py-[15px] text-center">
-        <Button onClick={editTable}>Editar</Button>
+      <td className="text-center relative">
+        <span
+          className={`${
+            isEditing ? "-translate-x-[40px]" : "translate-x-[180px]"
+          } absolute top-[15px] transition-all duration-1000 z-10`}
+        >
+          <Button onClick={editTable}>{isEditing ? "Salvar" : "Editar"}</Button>
+        </span>
       </td>
       <td
-        className="flex gap-2 items-center justify-center h-full"
+        className={`${
+          isEditing ? "opacity-100" : "opacity-0 pointer-events-none"
+        } flex gap-2 items-center justify-center h-full transition-all duration-1000`}
         onMouseEnter={openTooltip}
         onMouseLeave={closeTooltip}
       >

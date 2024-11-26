@@ -21,10 +21,6 @@ export const MonitoringSchedule = () => {
     setPriorityStations,
   } = useScheduleContext();
 
-  const handleEditTable = () => {
-    console.log("Editando");
-  };
-
   const handleMoveUpTableRows = () => {
     const firstOfAvailableStations = availableStations.shift();
     const firstOfPriorityStations = priorityStations.shift();
@@ -67,7 +63,6 @@ export const MonitoringSchedule = () => {
             />
           ))}
           <TableActions
-            editTable={handleEditTable}
             moveUpTableRows={handleMoveUpTableRows}
             moveDownTableRows={handleMoveDownTableRows}
           />
