@@ -2,6 +2,7 @@ interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
+  title?: string;
   children: React.ReactNode;
 };
 

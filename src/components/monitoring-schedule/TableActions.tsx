@@ -41,6 +41,8 @@ export const TableActions = ({
         onMouseLeave={closeTooltip}
       >
         <Button
+          type="button"
+          title="Rotacionar para cima"
           onClick={() => {
             moveUpTableRows();
             closeTooltip();
@@ -49,6 +51,8 @@ export const TableActions = ({
           <FaArrowUp />
         </Button>
         <Button
+          type="button"
+          title="Rotacionar para baixo"
           onClick={() => {
             moveDownTableRows();
             closeTooltip();
