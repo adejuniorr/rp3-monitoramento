@@ -42,6 +42,7 @@ export const ScheduleProvider = ({ children }: { children: ReactNode }) => {
   const [priorityStations, setPriorityStations] = useState<GasStation[]>([
     { id: 1, name: "Rosa Flor", acronym: "PRF" },
     { id: 2, name: "Valente", acronym: "PV" },
+    { id: 3, name: "Rei Davi", acronym: "PRD" },
   ]);
   const [isLoading, setIsLoading] = useState(true);
 
