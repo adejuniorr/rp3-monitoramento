@@ -6,11 +6,12 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "selector",
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        black: "#151515",
+        white: "#FAF9F6",
         "rp3-blue": "#11368E",
         "rp3-yellow": "#FFDE21"
       },

@@ -22,19 +22,19 @@ export const DayRow = ({
 
   const cellClass = isCurrentDay
     ? "bg-rp3-yellow text-rp3-blue px-4 py-2 rounded-md font-bold"
-    : "bg-gray-200 dark:bg-black px-4 py-2 rounded-md font-bold";
+    : "bg-gray-200 dark:bg-gray-800 px-4 py-2 rounded-md font-bold";
 
   const rowClass = isCurrentDay ? "bg-rp3-blue text-rp3-yellow font-bold" : "";
 
   return (
     <tr key={day} className={rowClass}>
-      <th className="py-[15px] border-r border-b border-foreground dark:border-gray-500">
+      <th className="py-[15px] border-r border-b border-gray-200 dark:border-gray-600">
         {day}
       </th>
-      <td className="py-[15px] w-[220px] text-center border-r border-b border-foreground dark:border-gray-500">
+      <td className="py-[15px] w-[220px] text-center border-r border-b border-gray-200 dark:border-gray-600">
         <span className={cellClass}>{station.name}</span>
       </td>
-      <td className="py-[15px] w-[220px] text-center border-b border-foreground dark:border-gray-500">
+      <td className="py-[15px] w-[220px] text-center border-b border-gray-200 dark:border-gray-600">
         <span className={cellClass}>{priorityStation.name}</span>
       </td>
     </tr>
