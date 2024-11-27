@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+_This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app)._
+# Cronograma de Monitoramento Online 🟦🟨
 
-## Getting Started
+## Sobre a Aplicação 👨‍💻📝
 
-First, run the development server:
+O Setor de Inteligência da **RP3 Combustíveis** tem diversas demandas na central administrativa da rede. Dentre elas, o monitoramento das câmeras de segurança das _7 unidades_ distribuidas por todo centro-sul da Bahia.
 
+Para facilitar coordenação por parte dos supervisores e o monitoramento em si por parte dos colaboradores da central, este projeto foi iniciado para centralizar e automatizar, a princípio, o cronograma de postos a serem monitorados ao longo da semana.
+
+## Detalhes e Inicialização do Projeto 🏎️🏁🏁🏁
+
+A seguir, a lista de dependências da aplicação:
+- **Next.js:** framework front-end;
+- **TypeScript:** linguagem baseada em _JavaScript_ com **tipagem dinâmica**;
+- **Tailwind CSS:** framework _CSS_ para estilização de componentes;
+- **pnpm:** gerenciador de pacotes para o _Node.js_;
+
+O comando para instalar as dependências e rodar a aplicação:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) em seu navegador para ver o resutltado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O projeto ainda usa [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) para otimizar e carregar automaticamente a nova familia de fontes do Vercel, [Geist](https://vercel.com/font).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy Vercel 💻
 
-## Learn More
+Seguindo o caminho mais fácil para o deploy de uma aplicação **Next.js**, a plataforma [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) foi escolhida para hospedar o sistema em produção.
 
-To learn more about Next.js, take a look at the following resources:
+## Mais sobre o Next.js 🦾
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Para ler mais sobre Next.js, acesse algum dos links abaixo:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs) - recursos diversos e API do Next.js.
+- [Learn Next.js](https://nextjs.org/learn) - tutorial interativo de Next.js.
+- [Repositório GitHub do Next.js](https://github.com/vercel/next.js) - Repositório open-source do Next.js
