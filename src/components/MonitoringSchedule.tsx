@@ -12,7 +12,12 @@ export type GasStation = {
 
 export const MonitoringSchedule = () => {
   const days = ["Segunda", "Terca", "Quarta", "Quinta", "Sexta"];
-  const currentDay: number = new Date().getDay() - 1;
+  const today = new Date().getDay();
+
+const currentDay =
+  today === 0 ? 0 : // Domingo ajustado para segunda (0)
+  today === 6 ? 4 : // Sábado ajustado para sexta (4)
+  today - 1;        // Ajuste para o índice de segunda a sexta
 
   const {
     availableStations,
