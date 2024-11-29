@@ -1,23 +1,47 @@
+"use client";
 import { useState } from "react";
-import { Button } from "../buttons/Button";
+import { useStations } from "@/contexts/StationsContext";
+import { Button } from "../../buttons/Button";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { IoTriangle } from "react-icons/io5";
 
-interface TableActionsProps {
-  moveUpTableRows: () => void;
-  moveDownTableRows: () => void;
-}
-
-export const TableActions = ({
-  moveUpTableRows,
-  moveDownTableRows,
-}: TableActionsProps) => {
+export const ActionsRow = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+  const {
+    availableStations,
+    updateAvailableStations,
+    priorityStations,
+    updatePriorityStations,
+  } = useStations();
 
   const editTable = () => setIsEditing(!isEditing);
   const openTooltip = () => setIsTooltipVisible(true);
   const closeTooltip = () => setIsTooltipVisible(false);
+
+  const moveUpTableRows = () => {
+    const firstOfAvailableStations = availableStations.shift();
+    const firstOfPriorityStations = priorityStations.shift();
+
+    if (firstOfAvailableStations && firstOfPriorityStations) {
+      availableStations.push(firstOfAvailableStations);
+      updateAvailableStations([...availableStations]);
+      priorityStations.push(firstOfPriorityStations);
+      updatePriorityStations([...priorityStations]);
+    }
+  };
+
+  const moveDownTableRows = () => {
+    const lastOfAvailableStations = availableStations.pop();
+    const lastOfPriorityStations = priorityStations.pop();
+
+    if (lastOfAvailableStations && lastOfPriorityStations) {
+      availableStations.unshift(lastOfAvailableStations);
+      updateAvailableStations([...availableStations]);
+      priorityStations.unshift(lastOfPriorityStations);
+      updatePriorityStations([...priorityStations]);
+    }
+  };
 
   return (
     <tr className="h-[75px]">
