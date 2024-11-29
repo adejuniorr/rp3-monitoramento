@@ -1,4 +1,4 @@
-export const THeader = () => {
+export const TableHeader = () => {
   return (
     <thead>
       <tr>

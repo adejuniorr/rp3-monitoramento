@@ -1,39 +1,34 @@
 "use client";
 import {
   createContext,
-  ReactNode,
   useContext,
-  useEffect,
   useState,
+  useEffect,
+  ReactNode,
 } from "react";
+import { GasStation } from "@/types/types";
 
-type GasStation = {
-  id: number;
-  name: string;
-  acronym: string;
-};
-
-interface ScheduleContextData {
+type StationsContextProps = {
+  isLoading: boolean;
   availableStations: GasStation[];
   updateAvailableStations: (newStations: GasStation[]) => void;
   priorityStations: GasStation[];
   updatePriorityStations: (newStations: GasStation[]) => void;
-  isLoading: boolean;
 }
 
-const ScheduleContext = createContext<ScheduleContextData | null>(null);
+const StationsContext = createContext<StationsContextProps | null>(null);
 
-export const useScheduleContext = () => {
-  const context = useContext(ScheduleContext);
+export const useStations = () => {
+  const context = useContext(StationsContext);
   if (!context) {
     throw new Error(
-      "useScheduleContext deve ser usado dentro de um ScheduleProvider"
+      "useStations deve ser usado dentro de um StationsProvider"
     );
   }
   return context;
 };
 
-export const ScheduleProvider = ({ children }: { children: ReactNode }) => {
+export const StationsProvider = ({ children }: { children: ReactNode }) => {
   const [availableStations, setAvailableStations] = useState<GasStation[]>([
     { id: 1, name: "Elefantinho", acronym: "PEL" },
     { id: 2, name: "Querubim", acronym: "PRJ" },
@@ -93,16 +88,16 @@ export const ScheduleProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <ScheduleContext.Provider
+    <StationsContext.Provider
       value={{
+        isLoading,
         availableStations,
         updateAvailableStations,
         priorityStations,
         updatePriorityStations,
-        isLoading,
       }}
     >
       {children}
-    </ScheduleContext.Provider>
+    </StationsContext.Provider>
   );
 };
