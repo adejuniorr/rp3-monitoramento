@@ -1,6 +1,6 @@
 export const TableHeader = () => {
   return (
-    <thead>
+    <thead data-testid="table-header">
       <tr>
         <th className="w-[160px] px-[16px] py-[24px] border-r border-b border-gray-200 dark:border-gray-600">
           Dias da Semana
