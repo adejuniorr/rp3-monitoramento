@@ -50,17 +50,15 @@ export const ActionsRow = () => {
       </th>
       <td className="text-center relative">
         <span
-          className={`${
-            isEditing ? "-translate-x-[40px]" : "translate-x-[180px]"
-          } absolute top-[15px] transition-all duration-1000 z-10`}
+          className={`${isEditing ? "-translate-x-[40px]" : "translate-x-[180px]"
+            } absolute top-[15px] transition-all duration-1000 z-10`}
         >
           <Button onClick={editTable}>{isEditing ? "Salvar" : "Editar"}</Button>
         </span>
       </td>
       <td
-        className={`${
-          isEditing ? "opacity-100" : "opacity-0 pointer-events-none"
-        } flex gap-2 items-center justify-center h-full transition-all duration-1000`}
+        className={`${isEditing ? "opacity-100" : "opacity-0 pointer-events-none"
+          } flex gap-2 items-center justify-center h-full transition-all duration-1000`}
         onMouseEnter={openTooltip}
         onMouseLeave={closeTooltip}
       >
