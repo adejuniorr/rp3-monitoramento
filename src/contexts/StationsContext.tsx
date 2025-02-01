@@ -29,7 +29,7 @@ export const useStations = () => {
 };
 
 export const StationsProvider = ({ children }: { children: ReactNode }) => {
-  const [availableStations, setAvailableStations] = useState<GasStation[]>([
+  /* const [availableStations, setAvailableStations] = useState<GasStation[]>([
     { id: 1, name: "Elefantinho", acronym: "PEL" },
     { id: 2, name: "Querubim", acronym: "PRJ" },
     { id: 3, name: "XPRES", acronym: "XPRES" },
@@ -38,6 +38,16 @@ export const StationsProvider = ({ children }: { children: ReactNode }) => {
     { id: 1, name: "Rosa Flor", acronym: "PRF" },
     { id: 2, name: "Valente", acronym: "PV" },
     { id: 3, name: "Rei Davi", acronym: "PRD" },
+  ]); */
+  const [availableStations, setAvailableStations] = useState<GasStation[]>([
+    { id: 1, name: "Salvador", acronym: "PEL" },
+    { id: 2, name: "São Paulo", acronym: "PRJ" },
+    { id: 3, name: "Rio Branco", acronym: "XPRES" },
+  ]);
+  const [priorityStations, setPriorityStations] = useState<GasStation[]>([
+    { id: 1, name: "Fortaleza", acronym: "PRF" },
+    { id: 2, name: "Maceió", acronym: "PV" },
+    { id: 3, name: "Cuiabá", acronym: "PRD" },
   ]);
   const [isLoading, setIsLoading] = useState(true);
 
