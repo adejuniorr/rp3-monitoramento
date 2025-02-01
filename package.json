@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "SET NODE_ENV=production & next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "date-fns-tz": "^3.2.0",
+    "dotenv": "^16.4.7",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",

@@ -9,7 +9,7 @@ export const TableHeader = () => {
           colSpan={2}
           className="px-[16px] py-[24px] border-b border-gray-200 dark:border-gray-600"
         >
-          Postos da Rede
+          Capitais
         </th>
       </tr>
     </thead>

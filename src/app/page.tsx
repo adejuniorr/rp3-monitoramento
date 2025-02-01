@@ -3,6 +3,8 @@ import { MonitoringSchedule } from "@/components/monitoring-schedule/MonitoringS
 import { StationsProvider } from "@/contexts/StationsContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 
+export const revalidate = 60;
+
 export default function Home() {
   return (
     <ThemeProvider>
